@@ -1,0 +1,16 @@
+stanfile_path: "stan/"
+compiled_path: "stan/exe/"
+results_path: "results/"
+datasets_path: "data/"
+scripts_path: "scripts/"
+
+scripts:
+  compile: "compile_model.R"
+  fit: "fit_model.R"
+  generate_data: "generate_data.R"
+  summarise: "summarise_results.R"
+
+models: ["gaussian", "student"]
+datasets: ["normal-25", "student-25", "exponential-25"]
+
+n_datasets: 10
