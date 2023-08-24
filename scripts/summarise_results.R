@@ -5,4 +5,4 @@ files <- list.files(results)
 
 out <- vroom(paste0(results,files))
 
-print(out)
+write.csv(out, paste0(results, "summary.csv"))
