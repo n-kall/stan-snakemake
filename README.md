@@ -5,4 +5,4 @@
 - `module load r`
 - `module load gcc`
 - `module load snakemake`
-- `snakemake --jobs 6 summarise_all`
+- `snakemake --slurm --jobs 6 summarise_all` (on Triton)
