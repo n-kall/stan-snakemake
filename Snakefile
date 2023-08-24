@@ -19,6 +19,10 @@ rule compile_all:
     input: expand(config["compiled_path"] + "{model}", model=config["models"])
 
 rule compile:
+    resources:
+        runtime=10,
+        cpus=1,
+        mem_per_cpu=1000
     input:
         get_stan_files
     output:
@@ -30,6 +34,10 @@ rule generate_data_all:
     input: expand(config["datasets_path"] + "{dataset}.RDS", dataset=config["datasets"])
         
 rule generate_data:
+    resources:
+        runtime=10,
+        cpus=1,
+        mem_per_cpu=1000
     output:
         dataset_file=config["datasets_path"] + "{dataset}.RDS"
     params:
@@ -45,6 +53,10 @@ rule fit_all:
     input: expand(config["results_path"] + "{fit}_{dataset}.csv", fit=config["models"], dataset=config["datasets"])
         
 rule fit:
+    resources:
+        runtime=10,
+        cpus=4,
+        mem_per_cpu=1000
     input:
         dataset=get_dataset,
         exe_file=get_compiled_models
@@ -55,6 +67,10 @@ rule fit:
 
 
 rule summarise_all:
+    resources:
+        runtime=10,
+        cpus=1,
+        mem_per_cpu=1000
     input: expand(config["results_path"] + "{fit}_{dataset}.csv", fit=config["models"], dataset=config["datasets"])
     script:
         config["scripts_path"] + config["scripts"]["summarise"]
