@@ -13,7 +13,7 @@ def get_fit_names(wildcards):
     return config["results"] + wildcards.fit + wildcards.dataset
 
 def get_dgp_script(wildcards):
-    return config["scripts_path"] + wildcards.dataset + ".R"
+    return config["scripts_path"] + "dgp_" + wildcards.dataset + ".R"
 
 rule compile_all:
     input: expand(config["compiled_path"] + "{model}", model=config["models"])
