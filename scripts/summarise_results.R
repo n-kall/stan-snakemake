@@ -1,8 +1,9 @@
 library(vroom)
-results <- snakemake@config[["results_path"]]
+results_path <- snakemake@config[["results_path"]]
+summary_path <- snakemake@config[["summary_path"]]
 
-files <- list.files(results)
+files <- list.files(results_path)
 
-out <- vroom(paste0(results,files))
+out <- vroom(paste0(results_path, files))
 
-write.csv(out, paste0(results, "summary.csv"))
+write.csv(out, paste0(summary_path, "summary.csv"))

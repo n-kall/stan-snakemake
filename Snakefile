@@ -73,6 +73,6 @@ rule summarise_all:
         mem_per_cpu=1000
     input: expand(config["results_path"] + "{fit}_{dataset}.csv", fit=config["models"], dataset=config["datasets"])
     output:
-        summary=config["results_path"] + "summary.csv"
+        summary=config["summary_path"] + "summary.csv"
     script:
         config["scripts_path"] + config["scripts"]["summarise"]
